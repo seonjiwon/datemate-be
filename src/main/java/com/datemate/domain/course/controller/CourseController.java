@@ -11,6 +11,7 @@ import com.datemate.global.code.success.GeneralSuccessCode;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * TODO: 프로덕션에서는 @AuthenticationPrincipal로 Member를 주입받도록 전환할 것
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/courses")
 @RequiredArgsConstructor
@@ -37,109 +39,120 @@ public class CourseController {
     private final MemberRepository memberRepository;
 
     // ── Dev용 임시 멤버 조회 ──
-    // TODO: @AuthenticationPrincipal 구현 후 제거
     private Member getDevMember() {
+        log.debug("[CourseController] Dev 멤버 조회 시도 (id=1)");
         return memberRepository.findById(1L)
-            .orElseThrow(() -> new RuntimeException(
-                "[Dev] member id=1이 없습니다. DB에 테스트 유저를 먼저 넣어주세요."
-            ));
+            .orElseThrow(() -> {
+                log.error("[CourseController] Dev 멤버(id=1)가 DB에 존재하지 않습니다. INSERT INTO member 필요");
+                return new RuntimeException(
+                    "[Dev] member id=1이 없습니다. DB에 테스트 유저를 먼저 넣어주세요."
+                );
+            });
     }
 
     /**
-     * 1. AI 기반 데이트 코스를 생성한다
-     * 2. Gemini 에이전트 루프를 실행하므로 응답 시간이 길 수 있다 (10~30초)
-     *
-     * POST /api/v1/courses
+     * POST /api/v1/courses — AI 기반 데이트 코스 생성
      */
     @PostMapping
     public ResponseEntity<CustomResponse<CourseResponse>> createCourse(
-        // TODO: @AuthenticationPrincipal Member member,
         @Valid @RequestBody CourseCreateRequest request
     ) {
-        // 1. dev용 임시 멤버로 코스 생성
+        log.info("[CourseController] POST /courses — 코스 생성 요청 수신: station={}, mood={}, budget={}-{}, transport={}",
+            request.selectedStationName(), request.mood(), request.budgetMin(), request.budgetMax(), request.transport());
+
         Member member = getDevMember();
+        long startTime = System.currentTimeMillis();
+
         CourseResponse response = courseService.createCourse(member, request);
 
-        // 2. 201 CREATED로 응답
+        long elapsed = System.currentTimeMillis() - startTime;
+        log.info("[CourseController] POST /courses — 코스 생성 완료 (소요시간: {}ms)", elapsed);
+
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(CustomResponse.onSuccess(GeneralSuccessCode.CREATED, response));
     }
 
     /**
-     * 1. 코스 상세를 조회한다
-     * 2. 코스 소유자만 접근 가능하다
-     *
-     * GET /api/v1/courses/{courseId}
+     * GET /api/v1/courses/{courseId} — 코스 상세 조회
      */
     @GetMapping("/{courseId}")
     public ResponseEntity<CustomResponse<CourseResponse>> getCourseDetail(
-        // TODO: @AuthenticationPrincipal Member member,
         @PathVariable Long courseId
     ) {
+        log.info("[CourseController] GET /courses/{} — 코스 상세 조회 요청", courseId);
+
         Member member = getDevMember();
         CourseResponse response = courseService.getCourseDetail(courseId, member);
+
+        log.debug("[CourseController] GET /courses/{} — 조회 완료", courseId);
+
         return ResponseEntity.ok(CustomResponse.onSuccess(response));
     }
 
     /**
-     * 1. 코스를 확정(CONFIRMED) 상태로 변경한다
-     * 2. DRAFT 상태에서만 가능하다
-     *
-     * POST /api/v1/courses/{courseId}/confirm
+     * POST /api/v1/courses/{courseId}/confirm — 코스 확정
      */
     @PostMapping("/{courseId}/confirm")
     public ResponseEntity<CustomResponse<?>> confirmCourse(
-        // TODO: @AuthenticationPrincipal Member member,
         @PathVariable Long courseId
     ) {
+        log.info("[CourseController] POST /courses/{}/confirm — 코스 확정 요청", courseId);
+
         Member member = getDevMember();
         courseService.confirmCourse(courseId, member);
+
+        log.info("[CourseController] POST /courses/{}/confirm — 확정 완료", courseId);
+
         return ResponseEntity.ok(CustomResponse.onSuccess(GeneralSuccessCode.OK));
     }
 
     /**
-     * 1. 코스 공유 링크를 생성한다
-     * 2. 이미 공유 링크가 있으면 기존 것을 반환한다
-     *
-     * POST /api/v1/courses/{courseId}/share
+     * POST /api/v1/courses/{courseId}/share — 공유 링크 생성
      */
     @PostMapping("/{courseId}/share")
     public ResponseEntity<CustomResponse<CourseShareResponse>> shareCourse(
-        // TODO: @AuthenticationPrincipal Member member,
         @PathVariable Long courseId
     ) {
+        log.info("[CourseController] POST /courses/{}/share — 공유 링크 생성 요청", courseId);
+
         Member member = getDevMember();
         CourseShareResponse response = courseService.shareCourse(courseId, member);
+
+        log.info("[CourseController] POST /courses/{}/share — 공유 토큰 생성: token={}",
+            courseId, response.shareToken());
+
         return ResponseEntity.ok(CustomResponse.onSuccess(response));
     }
 
     /**
-     * 1. 공유 토큰으로 코스를 조회한다 (비회원 접근 가능)
-     * 2. SecurityConfig에서 이 경로를 permitAll로 설정해야 한다
-     *
-     * GET /api/v1/courses/shared?token={shareToken}
+     * GET /api/v1/courses/shared?token={shareToken} — 공유 토큰으로 코스 조회
      */
     @GetMapping("/shared")
     public ResponseEntity<CustomResponse<CourseResponse>> getCourseByShareToken(
         @RequestParam String token
     ) {
+        log.info("[CourseController] GET /courses/shared — 공유 토큰 조회: token={}", token);
+
         CourseResponse response = courseService.getCourseByShareToken(token);
+
+        log.debug("[CourseController] GET /courses/shared — 조회 완료");
+
         return ResponseEntity.ok(CustomResponse.onSuccess(response));
     }
 
     /**
-     * 1. 내 코스 목록을 조회한다
-     * 2. 최신순으로 정렬하여 반환한다
-     *
-     * GET /api/v1/courses/my
+     * GET /api/v1/courses/my — 내 코스 목록 조회
      */
     @GetMapping("/my")
-    public ResponseEntity<CustomResponse<List<CourseResponse>>> getMyCourses(
-        // TODO: @AuthenticationPrincipal Member member
-    ) {
+    public ResponseEntity<CustomResponse<List<CourseResponse>>> getMyCourses() {
+        log.info("[CourseController] GET /courses/my — 내 코스 목록 조회");
+
         Member member = getDevMember();
         List<CourseResponse> responses = courseService.getMyCourses(member);
+
+        log.info("[CourseController] GET /courses/my — {}건 반환", responses.size());
+
         return ResponseEntity.ok(CustomResponse.onSuccess(responses));
     }
 }

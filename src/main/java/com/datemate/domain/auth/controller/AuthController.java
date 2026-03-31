@@ -8,6 +8,7 @@ import com.datemate.global.CustomResponse;
 import com.datemate.global.code.success.GeneralSuccessCode;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 1. 소셜 로그인, 토큰 갱신, 로그아웃 엔드포인트를 제공한다
  * 2. JWT 인증이 필요 없는 공개 API이다 (SecurityConfig에서 permitAll)
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
@@ -27,43 +29,47 @@ public class AuthController {
     private final AuthService authService;
 
     /**
-     * 1. 소셜 토큰으로 로그인/회원가입하고 JWT 쌍을 발급한다
-     * 2. 신규 사용자면 자동 가입 후 토큰을 발급한다
-     *
-     * POST /api/v1/auth/login
+     * POST /api/v1/auth/login — 소셜 로그인
      */
     @PostMapping("/login")
     public ResponseEntity<CustomResponse<TokenResponse>> login(
         @Valid @RequestBody LoginRequest request
     ) {
+        log.info("[AuthController] POST /auth/login — 로그인 요청: provider={}", request.provider());
+
         TokenResponse tokenResponse = authService.login(request);
+
+        log.info("[AuthController] POST /auth/login — 로그인 성공: provider={}", request.provider());
+
         return ResponseEntity.ok(CustomResponse.onSuccess(tokenResponse));
     }
 
     /**
-     * 1. 리프레시 토큰으로 새 JWT 쌍을 발급한다
-     * 2. token rotation 적용 — 리프레시 토큰도 함께 갱신된다
-     *
-     * POST /api/v1/auth/refresh
+     * POST /api/v1/auth/refresh — 토큰 갱신
      */
     @PostMapping("/refresh")
     public ResponseEntity<CustomResponse<TokenResponse>> refreshToken(
         @Valid @RequestBody TokenRefreshRequest request
     ) {
+        log.info("[AuthController] POST /auth/refresh — 토큰 갱신 요청");
+
         TokenResponse tokenResponse = authService.refreshToken(request);
+
+        log.debug("[AuthController] POST /auth/refresh — 갱신 완료");
+
         return ResponseEntity.ok(CustomResponse.onSuccess(tokenResponse));
     }
 
     /**
-     * 1. 로그아웃 처리 — 모든 기기의 리프레시 토큰을 삭제한다
-     *
-     * POST /api/v1/auth/logout
-     *
-     * TODO: @AuthenticationPrincipal Member member 주입 후 authService.logout(member) 호출
+     * POST /api/v1/auth/logout — 로그아웃
      */
     @PostMapping("/logout")
     public ResponseEntity<CustomResponse<?>> logout() {
-        // TODO: authService.logout(member);
+        log.info("[AuthController] POST /auth/logout — 로그아웃 요청");
+
+        // TODO: @AuthenticationPrincipal Member member 주입 후 authService.logout(member) 호출
+        log.warn("[AuthController] POST /auth/logout — stub 상태 (미구현)");
+
         return ResponseEntity.ok(CustomResponse.onSuccess(GeneralSuccessCode.OK));
     }
 }

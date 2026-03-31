@@ -78,17 +78,30 @@ public class GooglePlacesService {
      * @return Google Places API 응답 JSON 문자열
      */
     public String searchNearbyPlaces(double lat, double lng, String category, double radius) {
+        log.info("[GooglePlacesService] 주변 장소 검색 시작: lat={}, lng={}, category={}, radius={}", lat, lng, category, radius);
+
         // 1. radius가 10 미만이면 km 단위로 오해한 것 — 미터로 보정한다
         double correctedRadius = radius < 10 ? radius * 1000 : radius;
+        if (correctedRadius != radius) {
+            log.debug("[GooglePlacesService] 반경 보정: {}→{}m (km→m 변환)", radius, correctedRadius);
+        }
 
         // 2. 요청 본문을 조립한다
         String requestBody = buildSearchRequestBody(lat, lng, category, correctedRadius);
+        log.debug("[GooglePlacesService] 요청 본문: {}", requestBody);
 
         // 3. 429 대비 재시도 로직으로 API를 호출한다
-        return retryUtil.executeWithRetry(
+        long startTime = System.currentTimeMillis();
+        String result = retryUtil.executeWithRetry(
             () -> callPlacesApi(requestBody),
             "GooglePlaces.searchNearby"
         );
+        long elapsed = System.currentTimeMillis() - startTime;
+
+        log.info("[GooglePlacesService] 주변 장소 검색 완료 (소요시간: {}ms, 응답크기: {}자)", elapsed, result != null ? result.length() : 0);
+        log.debug("[GooglePlacesService] 응답 미리보기: {}", result != null && result.length() > 500 ? result.substring(0, 500) + "..." : result);
+
+        return result;
     }
 
     /**
@@ -101,33 +114,51 @@ public class GooglePlacesService {
      */
     @Transactional
     public List<Place> cacheAndGetPlaces(String placesJson) {
+        log.info("[GooglePlacesService] 장소 캐싱 시작");
         List<Place> result = new ArrayList<>();
 
         try {
             JsonObject response = JsonParser.parseString(placesJson).getAsJsonObject();
 
             if (!response.has("places")) {
+                log.warn("[GooglePlacesService] API 응답에 'places' 필드가 없음 — 빈 결과 반환");
                 return result;
             }
 
             JsonArray places = response.getAsJsonArray("places");
+            log.info("[GooglePlacesService] 파싱된 장소 수: {}개", places.size());
 
+            int cached = 0, newSaved = 0, skipped = 0;
             for (JsonElement element : places) {
                 JsonObject placeObj = element.getAsJsonObject();
                 String googlePlaceId = extractString(placeObj, "id");
 
                 if (googlePlaceId == null) {
+                    skipped++;
+                    log.debug("[GooglePlacesService] googlePlaceId가 null인 장소 건너뜀");
                     continue;
                 }
 
                 // 1. 이미 캐싱된 장소면 DB에서 가져온다
+                boolean[] isNew = {false};
                 Place place = placeRepository.findByGooglePlaceId(googlePlaceId)
-                    .orElseGet(() -> savePlaceFromJson(placeObj, googlePlaceId));
+                    .orElseGet(() -> {
+                        isNew[0] = true;
+                        return savePlaceFromJson(placeObj, googlePlaceId);
+                    });
 
+                if (isNew[0]) {
+                    newSaved++;
+                    log.debug("[GooglePlacesService] 신규 장소 저장: id={}, name={}", place.getId(), place.getName());
+                } else {
+                    cached++;
+                }
                 result.add(place);
             }
+
+            log.info("[GooglePlacesService] 장소 캐싱 완료: 기존={}건, 신규={}건, 건너뜀={}건", cached, newSaved, skipped);
         } catch (Exception e) {
-            log.error("[GooglePlacesService] 장소 캐싱 중 오류 발생", e);
+            log.error("[GooglePlacesService] 장소 캐싱 중 오류 발생: {}", e.getMessage(), e);
             throw new CustomException(PlaceErrorCode.GOOGLE_API_PARSE_ERROR);
         }
 
@@ -167,8 +198,9 @@ public class GooglePlacesService {
      * 2. RestClient 기반 동기 호출 — WebClient의 .block() 패턴 대체
      */
     private String callPlacesApi(String requestBody) {
+        log.debug("[GooglePlacesService] Places API 호출: POST /v1/places:searchNearby");
         try {
-            return restClient.post()
+            String response = restClient.post()
                              .uri("/v1/places:searchNearby")
                              .header("X-Goog-Api-Key", apiKey)
                              .header("X-Goog-FieldMask",
@@ -179,8 +211,10 @@ public class GooglePlacesService {
                              .body(requestBody)
                              .retrieve()
                              .body(String.class);
+            log.debug("[GooglePlacesService] Places API 응답 수신 완료");
+            return response;
         } catch (Exception e) {
-            log.error("[GooglePlacesService] Places API 호출 실패", e);
+            log.error("[GooglePlacesService] Places API 호출 실패: {}", e.getMessage(), e);
             throw new CustomException(PlaceErrorCode.GOOGLE_API_ERROR);
         }
     }

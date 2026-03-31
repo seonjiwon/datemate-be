@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- ═══════════════════════════════════════════
+         DateMate 로깅 설정
+         1. 콘솔 출력: 개발 시 즉시 확인 가능
+         2. 파일 출력: logs/ 디렉토리에 롤링 저장
+         3. 패키지별 레벨 분리
+         ═══════════════════════════════════════════ -->
+
+    <!-- 공통 변수 -->
+    <property name="LOG_PATH" value="logs" />
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n" />
+    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+
+    <!-- ── 콘솔 출력 ── -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ── 파일 출력 (일별 롤링) ── -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/datemate.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/datemate.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ── ERROR 전용 파일 ── -->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/datemate-error.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/datemate-error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ═══════════════════════════════════════════
+         패키지별 로그 레벨
+         ═══════════════════════════════════════════ -->
+
+    <!-- DateMate 앱 전체: DEBUG -->
+    <logger name="com.datemate" level="DEBUG" />
+
+    <!-- 컨트롤러: DEBUG — 요청/응답 추적 -->
+    <logger name="com.datemate.domain.course.controller" level="DEBUG" />
+    <logger name="com.datemate.domain.auth.controller" level="DEBUG" />
+
+    <!-- 서비스: DEBUG — 비즈니스 로직 추적 -->
+    <logger name="com.datemate.domain.course.service" level="DEBUG" />
+    <logger name="com.datemate.domain.auth.service" level="DEBUG" />
+    <logger name="com.datemate.domain.place.service" level="DEBUG" />
+
+    <!-- AI/외부 API: DEBUG — 에이전트 루프, API 호출 추적 -->
+    <logger name="com.datemate.infra.ai" level="DEBUG" />
+
+    <!-- Spring Framework: WARN (노이즈 제거) -->
+    <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework.web" level="INFO" />
+
+    <!-- Hibernate SQL: dev 프로필에서만 DEBUG -->
+    <springProfile name="dev">
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />
+    </springProfile>
+
+    <springProfile name="!dev">
+        <logger name="org.hibernate.SQL" level="WARN" />
+    </springProfile>
+
+    <!-- ── 루트 로거 ── -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="ERROR_FILE" />
+    </root>
+
+</configuration>

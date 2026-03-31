@@ -1,0 +1,1202 @@
+2026-03-31 23:17:58.625 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-31 23:17:58.664 [main] INFO  com.datemate.Application - Starting Application using Java 17.0.12 with PID 6571 (/Users/jiwonseon/Programming/03_Projects/02_datamate/datemate-be/build/classes/java/main started by jiwonseon in /Users/jiwonseon/Programming/03_Projects/02_datamate/datemate-be)
+2026-03-31 23:17:58.664 [main] DEBUG com.datemate.Application - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-31 23:17:58.665 [main] INFO  com.datemate.Application - The following 1 profile is active: "dev"
+2026-03-31 23:17:59.784 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-31 23:17:59.785 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-31 23:17:59.785 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-31 23:17:59.814 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-31 23:17:59.948 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-31 23:17:59.985 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-03-31 23:18:00.004 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-31 23:18:00.186 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-31 23:18:00.443 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@bd703bb
+2026-03-31 23:18:00.444 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-31 23:18:00.578 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-31 23:18:01.192 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-31 23:18:01.257 [main] DEBUG org.hibernate.SQL - 
+    alter table course 
+       modify column status enum ('COMPLETED','CONFIRMED','DRAFT') not null
+2026-03-31 23:18:01.288 [main] DEBUG org.hibernate.SQL - 
+    alter table course_place 
+       modify column travel_method_to_next enum ('BUS','NONE','SUBWAY','TAXI','WALK')
+2026-03-31 23:18:01.292 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column mood enum ('ACTIVE','CASUAL','QUIET','ROMANTIC') not null
+2026-03-31 23:18:01.302 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column status enum ('COMPLETED','FAILED','PENDING','PROCESSING') not null
+2026-03-31 23:18:01.310 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column transport enum ('CAR','PUBLIC','WALK') not null
+2026-03-31 23:18:01.317 [main] DEBUG org.hibernate.SQL - 
+    alter table member 
+       modify column auth_provider enum ('APPLE','KAKAO') not null
+2026-03-31 23:18:01.325 [main] DEBUG org.hibernate.SQL - 
+    alter table member 
+       modify column role enum ('ADMIN','USER') not null
+2026-03-31 23:18:01.330 [main] DEBUG org.hibernate.SQL - 
+    alter table place 
+       modify column category enum ('ACTIVITY','CAFE','CULTURE','ETC','OUTDOOR','RESTAURANT','SHOPPING') not null
+2026-03-31 23:18:01.725 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-31 23:18:02.261 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-31 23:18:02.281 [main] INFO  com.datemate.Application - Started Application in 4.205 seconds (process running for 4.742)
+2026-03-31 23:18:02.817 [RMI TCP Connection(2)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-31 23:18:02.817 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-31 23:18:02.818 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-03-31 23:33:01.310 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-31 23:33:01.318 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-31 23:33:03.557 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-31 23:33:03.582 [main] INFO  com.datemate.Application - Starting Application using Java 17.0.12 with PID 9213 (/Users/jiwonseon/Programming/03_Projects/02_datamate/datemate-be/build/classes/java/main started by jiwonseon in /Users/jiwonseon/Programming/03_Projects/02_datamate/datemate-be)
+2026-03-31 23:33:03.583 [main] DEBUG com.datemate.Application - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-31 23:33:03.583 [main] INFO  com.datemate.Application - The following 1 profile is active: "dev"
+2026-03-31 23:33:04.670 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-31 23:33:04.671 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-31 23:33:04.672 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-31 23:33:04.706 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-31 23:33:04.856 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-31 23:33:04.886 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-03-31 23:33:04.910 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-31 23:33:05.078 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-31 23:33:05.247 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51aaa9d4
+2026-03-31 23:33:05.248 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-31 23:33:05.312 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-31 23:33:05.852 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-31 23:33:05.906 [main] DEBUG org.hibernate.SQL - 
+    alter table course 
+       modify column status enum ('COMPLETED','CONFIRMED','DRAFT') not null
+2026-03-31 23:33:05.934 [main] DEBUG org.hibernate.SQL - 
+    alter table course_place 
+       modify column travel_method_to_next enum ('BUS','NONE','SUBWAY','TAXI','WALK')
+2026-03-31 23:33:05.941 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column mood enum ('ACTIVE','CASUAL','QUIET','ROMANTIC') not null
+2026-03-31 23:33:05.948 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column status enum ('COMPLETED','FAILED','PENDING','PROCESSING') not null
+2026-03-31 23:33:05.960 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column transport enum ('CAR','PUBLIC','WALK') not null
+2026-03-31 23:33:05.967 [main] DEBUG org.hibernate.SQL - 
+    alter table member 
+       modify column auth_provider enum ('APPLE','KAKAO') not null
+2026-03-31 23:33:05.975 [main] DEBUG org.hibernate.SQL - 
+    alter table member 
+       modify column role enum ('ADMIN','USER') not null
+2026-03-31 23:33:05.982 [main] DEBUG org.hibernate.SQL - 
+    alter table place 
+       modify column category enum ('ACTIVITY','CAFE','CULTURE','ETC','OUTDOOR','RESTAURANT','SHOPPING') not null
+2026-03-31 23:33:06.364 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-31 23:33:06.848 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-31 23:33:06.866 [main] INFO  com.datemate.Application - Started Application in 3.818 seconds (process running for 4.171)
+2026-03-31 23:33:07.723 [RMI TCP Connection(3)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-31 23:33:07.723 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-31 23:33:07.725 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-03-31 23:37:02.518 [http-nio-8080-exec-1] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses — 코스 생성 요청 수신: station=합정역, mood=ACTIVE, budget=30000-50000, transport=PUBLIC
+2026-03-31 23:37:02.519 [http-nio-8080-exec-1] DEBUG c.d.d.c.controller.CourseController - [CourseController] Dev 멤버 조회 시도 (id=1)
+2026-03-31 23:37:02.569 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.member_id,
+        m1_0.auth_provider,
+        m1_0.created_at,
+        m1_0.deleted_at,
+        m1_0.email,
+        m1_0.is_deleted,
+        m1_0.nickname,
+        m1_0.profile_image_url,
+        m1_0.role,
+        m1_0.social_id,
+        m1_0.updated_at 
+    from
+        member m1_0 
+    where
+        m1_0.member_id=?
+2026-03-31 23:37:02.603 [http-nio-8080-exec-1] ERROR c.d.d.c.controller.CourseController - [CourseController] Dev 멤버(id=1)가 DB에 존재하지 않습니다. INSERT INTO member 필요
+2026-03-31 23:37:02.605 [http-nio-8080-exec-1] ERROR c.d.g.e.h.GlobalExceptionHandler - Internal Server Error
+java.lang.RuntimeException: [Dev] member id=1이 없습니다. DB에 테스트 유저를 먼저 넣어주세요.
+	at com.datemate.domain.course.controller.CourseController.lambda$getDevMember$0(CourseController.java:47)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.datemate.domain.course.controller.CourseController.getDevMember(CourseController.java:45)
+	at com.datemate.domain.course.controller.CourseController.createCourse(CourseController.java:63)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-03-31 23:38:58.363 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-31 23:38:58.369 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-31 23:39:00.176 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-31 23:39:00.205 [main] INFO  com.datemate.Application - Starting Application using Java 17.0.12 with PID 21356 (/Users/jiwonseon/Programming/03_Projects/02_datamate/datemate-be/build/classes/java/main started by jiwonseon in /Users/jiwonseon/Programming/03_Projects/02_datamate/datemate-be)
+2026-03-31 23:39:00.206 [main] DEBUG com.datemate.Application - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-31 23:39:00.206 [main] INFO  com.datemate.Application - The following 1 profile is active: "dev"
+2026-03-31 23:39:01.218 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-31 23:39:01.219 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-31 23:39:01.219 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-31 23:39:01.246 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-31 23:39:01.365 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-31 23:39:01.393 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-03-31 23:39:01.410 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-31 23:39:01.582 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-31 23:39:01.775 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b04a6a4
+2026-03-31 23:39:01.777 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-31 23:39:01.835 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-31 23:39:02.363 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-31 23:39:02.443 [main] DEBUG org.hibernate.SQL - 
+    alter table course 
+       modify column status enum ('COMPLETED','CONFIRMED','DRAFT') not null
+2026-03-31 23:39:02.476 [main] DEBUG org.hibernate.SQL - 
+    alter table course_place 
+       modify column travel_method_to_next enum ('BUS','NONE','SUBWAY','TAXI','WALK')
+2026-03-31 23:39:02.481 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column mood enum ('ACTIVE','CASUAL','QUIET','ROMANTIC') not null
+2026-03-31 23:39:02.493 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column status enum ('COMPLETED','FAILED','PENDING','PROCESSING') not null
+2026-03-31 23:39:02.503 [main] DEBUG org.hibernate.SQL - 
+    alter table course_request 
+       modify column transport enum ('CAR','PUBLIC','WALK') not null
+2026-03-31 23:39:02.513 [main] DEBUG org.hibernate.SQL - 
+    alter table member 
+       modify column auth_provider enum ('APPLE','KAKAO') not null
+2026-03-31 23:39:02.520 [main] DEBUG org.hibernate.SQL - 
+    alter table member 
+       modify column role enum ('ADMIN','USER') not null
+2026-03-31 23:39:02.534 [main] DEBUG org.hibernate.SQL - 
+    alter table place 
+       modify column category enum ('ACTIVITY','CAFE','CULTURE','ETC','OUTDOOR','RESTAURANT','SHOPPING') not null
+2026-03-31 23:39:02.893 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-31 23:39:03.339 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-31 23:39:03.356 [main] INFO  com.datemate.Application - Started Application in 3.441 seconds (process running for 3.828)
+2026-03-31 23:39:03.700 [RMI TCP Connection(4)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-31 23:39:03.700 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-31 23:39:03.701 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-03-31 23:39:08.931 [http-nio-8080-exec-1] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses — 코스 생성 요청 수신: station=합정역, mood=ACTIVE, budget=30000-50000, transport=PUBLIC
+2026-03-31 23:39:08.931 [http-nio-8080-exec-1] DEBUG c.d.d.c.controller.CourseController - [CourseController] Dev 멤버 조회 시도 (id=1)
+2026-03-31 23:39:08.949 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.member_id,
+        m1_0.auth_provider,
+        m1_0.created_at,
+        m1_0.deleted_at,
+        m1_0.email,
+        m1_0.is_deleted,
+        m1_0.nickname,
+        m1_0.profile_image_url,
+        m1_0.role,
+        m1_0.social_id,
+        m1_0.updated_at 
+    from
+        member m1_0 
+    where
+        m1_0.member_id=?
+2026-03-31 23:39:08.966 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] 코스 생성 시작 — memberId=1, station=합정역, mood=ACTIVE, budget=30000-50000
+2026-03-31 23:39:08.984 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_request
+        (budget_max, budget_min, created_at, member_id, mood, origin_a_address, origin_a_lat, origin_a_lng, origin_b_address, origin_b_lat, origin_b_lng, selected_station_lat, selected_station_lng, selected_station_name, status, transport, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:08.994 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseRequest 저장 — id=1, station=합정역
+2026-03-31 23:39:08.995 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseRequest 저장 완료 — courseRequestId=1
+2026-03-31 23:39:08.995 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] 에이전트 루프 실행 시작
+2026-03-31 23:39:08.996 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 사용자 메시지 생성 완료 — 길이: 87자
+2026-03-31 23:39:08.997 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 1회차 시작 ===
+2026-03-31 23:39:14.117 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 1회차, 소요시간: 5119ms
+2026-03-31 23:39:14.117 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] AI 도구 호출 요청: function=search_nearby_places, args={"lng":126.9174,"radius":1000,"category":"restaurant","lat":37.5499}
+2026-03-31 23:39:14.117 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] search_nearby_places 실행 — lat=37.5499, lng=126.9174, category=restaurant, radius=1000.0
+2026-03-31 23:39:14.118 [http-nio-8080-exec-1] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 시작: lat=37.5499, lng=126.9174, category=restaurant, radius=1000.0
+2026-03-31 23:39:14.118 [http-nio-8080-exec-1] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 요청 본문: {"locationRestriction":{"circle":{"center":{"latitude":37.5499,"longitude":126.9174},"radius":1000.0}},"includedTypes":["restaurant"]}
+2026-03-31 23:39:14.119 [http-nio-8080-exec-1] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 호출: POST /v1/places:searchNearby
+2026-03-31 23:39:14.775 [http-nio-8080-exec-1] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 응답 수신 완료
+2026-03-31 23:39:14.776 [http-nio-8080-exec-1] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 완료 (소요시간: 658ms, 응답크기: 257056자)
+2026-03-31 23:39:14.776 [http-nio-8080-exec-1] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 응답 미리보기: {
+  "places": [
+    {
+      "id": "ChIJOc4lEduYfDURupLmvgHXcMs",
+      "formattedAddress": "6 Yanghwa-ro 16-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5535944,
+        "longitude": 126.92013539999998
+      },
+      "rating": 4,
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "userRatingCount": 2003,
+      "displayName": {
+        "text": "Kyochon Chicken Hongdae",
+        "languageCode": "en"
+      },
+      "photos": [
+        {
+          "name": "places/ChIJ...
+2026-03-31 23:39:14.777 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] 도구 실행 완료 — function=search_nearby_places, 소요시간: 660ms, 결과 길이: 257056자
+2026-03-31 23:39:14.777 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 도구 결과 (앞 300자): {
+  "places": [
+    {
+      "id": "ChIJOc4lEduYfDURupLmvgHXcMs",
+      "formattedAddress": "6 Yanghwa-ro 16-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5535944,
+        "longitude": 126.92013539999998
+      },
+      "rating": 4,
+      "priceLevel": "PRICE_LEVEL_MODE
+2026-03-31 23:39:14.784 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 2회차 시작 ===
+2026-03-31 23:39:34.987 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 2회차, 소요시간: 20203ms
+2026-03-31 23:39:34.988 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] AI 최종 텍스트 응답 수신 — 루프 종료 (총 2회차)
+2026-03-31 23:39:34.988 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] 에이전트 루프 완료 — 소요시간: 25993ms, 응답 길이: 1294자
+2026-03-31 23:39:34.989 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] AI 응답 JSON (앞 500자): ```json
+{
+  "title": "합정X홍대 에너제틱 먹방 데이트",
+  "description": "합정역 근처에서 맛있는 고기와 이색적인 카페를 즐기며 활기찬 시간을 보낼 수 있는 데이트 코스입니다.",
+  "places": [
+    {
+      "order": 1,
+      "name": "강남 돼지상회 무한리필 홍대점",
+      "google_place_id": "ChIJZ-YgONuYfDUR2w8zpfOvpvE",
+      "category": "RESTAURANT",
+      "duration_minutes": 90,
+      "cost_min": 25000,
+      "cost_max": 35000,
+      "travel_method_to_next": "WALK",
+      "travel_time_to_next": 5,
+      "memo": "활기찬 분위기에서 신선한 무한리필 삼겹살을 직접 구워 먹으며 든든하게 데이트를 시작해보세요. 합리적
+2026-03-31 23:39:34.989 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] AI 응답 파싱 — 장소 3개 발견
+2026-03-31 23:39:34.989 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 파싱 결과 — title=합정X홍대 에너제틱 먹방 데이트, totalDuration=217분, costRange=35000-60000원
+2026-03-31 23:39:34.992 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course
+        (course_request_id, created_at, description, member_id, start_time, status, title, total_cost_max, total_cost_min, total_duration, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:34.995 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] Course 엔티티 저장 — courseId=1
+2026-03-31 23:39:34.995 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 장소 저장 중 — [1/3] 강남 돼지상회 무한리필 홍대점
+2026-03-31 23:39:35.057 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.place_id,
+        p1_0.address,
+        p1_0.category,
+        p1_0.created_at,
+        p1_0.google_place_id,
+        p1_0.latitude,
+        p1_0.longitude,
+        p1_0.name,
+        p1_0.photo_reference,
+        p1_0.price_level,
+        p1_0.rating,
+        p1_0.updated_at 
+    from
+        place p1_0 
+    where
+        p1_0.google_place_id=?
+2026-03-31 23:39:35.061 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 신규 Place 생성 — googlePlaceId=ChIJZ-YgONuYfDUR2w8zpfOvpvE
+2026-03-31 23:39:35.063 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        place
+        (address, category, created_at, google_place_id, latitude, longitude, name, photo_reference, price_level, rating, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:35.073 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_place
+        (cost_max, cost_min, course_id, created_at, duration_minutes, memo, order_index, place_id, travel_method_to_next, travel_time_to_next, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:35.077 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 장소 저장 중 — [2/3] 홍대 거리 구경 및 쇼핑
+2026-03-31 23:39:35.078 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.place_id,
+        p1_0.address,
+        p1_0.category,
+        p1_0.created_at,
+        p1_0.google_place_id,
+        p1_0.latitude,
+        p1_0.longitude,
+        p1_0.name,
+        p1_0.photo_reference,
+        p1_0.price_level,
+        p1_0.rating,
+        p1_0.updated_at 
+    from
+        place p1_0 
+    where
+        p1_0.google_place_id=?
+2026-03-31 23:39:35.079 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 신규 Place 생성 — googlePlaceId=
+2026-03-31 23:39:35.079 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        place
+        (address, category, created_at, google_place_id, latitude, longitude, name, photo_reference, price_level, rating, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:35.081 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_place
+        (cost_max, cost_min, course_id, created_at, duration_minutes, memo, order_index, place_id, travel_method_to_next, travel_time_to_next, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:35.081 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 장소 저장 중 — [3/3] 943 King's Cross
+2026-03-31 23:39:35.082 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.place_id,
+        p1_0.address,
+        p1_0.category,
+        p1_0.created_at,
+        p1_0.google_place_id,
+        p1_0.latitude,
+        p1_0.longitude,
+        p1_0.name,
+        p1_0.photo_reference,
+        p1_0.price_level,
+        p1_0.rating,
+        p1_0.updated_at 
+    from
+        place p1_0 
+    where
+        p1_0.google_place_id=?
+2026-03-31 23:39:35.083 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] 신규 Place 생성 — googlePlaceId=ChIJEadTU22ZfDUR5a0eGJIKQnA
+2026-03-31 23:39:35.084 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        place
+        (address, category, created_at, google_place_id, latitude, longitude, name, photo_reference, price_level, rating, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:35.085 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_place
+        (cost_max, cost_min, course_id, created_at, duration_minutes, memo, order_index, place_id, travel_method_to_next, travel_time_to_next, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:39:35.086 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] CoursePlace 전체 저장 완료 — courseId=1, placeCount=3
+2026-03-31 23:39:35.086 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] Course 저장 완료 — courseId=1, title=합정X홍대 에너제틱 먹방 데이트
+2026-03-31 23:39:35.090 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        cp1_0.course_place_id,
+        cp1_0.cost_max,
+        cp1_0.cost_min,
+        cp1_0.course_id,
+        cp1_0.created_at,
+        cp1_0.duration_minutes,
+        cp1_0.memo,
+        cp1_0.order_index,
+        cp1_0.place_id,
+        cp1_0.travel_method_to_next,
+        cp1_0.travel_time_to_next,
+        cp1_0.updated_at 
+    from
+        course_place cp1_0 
+    where
+        cp1_0.course_id=? 
+    order by
+        cp1_0.order_index
+2026-03-31 23:39:35.093 [http-nio-8080-exec-1] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseResponse 조립 — courseId=1, placeCount=3
+2026-03-31 23:39:35.094 [http-nio-8080-exec-1] INFO  c.d.d.course.service.CourseService - [CourseService] 코스 생성 전체 완료 — courseId=1
+2026-03-31 23:39:35.096 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    update
+        course_request 
+    set
+        budget_max=?,
+        budget_min=?,
+        member_id=?,
+        mood=?,
+        origin_a_address=?,
+        origin_a_lat=?,
+        origin_a_lng=?,
+        origin_b_address=?,
+        origin_b_lat=?,
+        origin_b_lng=?,
+        selected_station_lat=?,
+        selected_station_lng=?,
+        selected_station_name=?,
+        status=?,
+        transport=?,
+        updated_at=? 
+    where
+        course_request_id=?
+2026-03-31 23:39:35.099 [http-nio-8080-exec-1] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses — 코스 생성 완료 (소요시간: 26134ms)
+2026-03-31 23:43:21.349 [http-nio-8080-exec-3] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses/1/share — 공유 링크 생성 요청
+2026-03-31 23:43:21.351 [http-nio-8080-exec-3] DEBUG c.d.d.c.controller.CourseController - [CourseController] Dev 멤버 조회 시도 (id=1)
+2026-03-31 23:43:21.360 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.member_id,
+        m1_0.auth_provider,
+        m1_0.created_at,
+        m1_0.deleted_at,
+        m1_0.email,
+        m1_0.is_deleted,
+        m1_0.nickname,
+        m1_0.profile_image_url,
+        m1_0.role,
+        m1_0.social_id,
+        m1_0.updated_at 
+    from
+        member m1_0 
+    where
+        m1_0.member_id=?
+2026-03-31 23:43:21.365 [http-nio-8080-exec-3] INFO  c.d.d.course.service.CourseService - [CourseService] 공유 링크 생성 — courseId=1, memberId=1
+2026-03-31 23:43:21.366 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.course_id,
+        c1_0.course_request_id,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.member_id,
+        c1_0.start_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.total_cost_max,
+        c1_0.total_cost_min,
+        c1_0.total_duration,
+        c1_0.updated_at 
+    from
+        course c1_0 
+    where
+        c1_0.course_id=?
+2026-03-31 23:43:21.378 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        cs1_0.course_share_id,
+        cs1_0.course_id,
+        cs1_0.created_at,
+        cs1_0.expires_at,
+        cs1_0.share_token,
+        cs1_0.updated_at,
+        cs1_0.view_count 
+    from
+        course_share cs1_0 
+    where
+        cs1_0.course_id=?
+2026-03-31 23:43:21.389 [http-nio-8080-exec-3] DEBUG c.d.d.course.service.CourseService - [CourseService] 신규 공유 토큰 생성 — courseId=1
+2026-03-31 23:43:21.394 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_share
+        (course_id, created_at, expires_at, share_token, updated_at, view_count) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2026-03-31 23:43:21.399 [http-nio-8080-exec-3] INFO  c.d.d.course.service.CourseService - [CourseService] 공유 링크 생성 완료 — courseId=1, token=632ed85efa364f26996242ff52973b59
+2026-03-31 23:43:21.403 [http-nio-8080-exec-3] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses/1/share — 공유 토큰 생성: token=632ed85efa364f26996242ff52973b59
+2026-03-31 23:43:43.741 [http-nio-8080-exec-7] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses — 코스 생성 요청 수신: station=합정역, mood=ACTIVE, budget=30000-50000, transport=WALK
+2026-03-31 23:43:43.744 [http-nio-8080-exec-7] DEBUG c.d.d.c.controller.CourseController - [CourseController] Dev 멤버 조회 시도 (id=1)
+2026-03-31 23:43:43.747 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.member_id,
+        m1_0.auth_provider,
+        m1_0.created_at,
+        m1_0.deleted_at,
+        m1_0.email,
+        m1_0.is_deleted,
+        m1_0.nickname,
+        m1_0.profile_image_url,
+        m1_0.role,
+        m1_0.social_id,
+        m1_0.updated_at 
+    from
+        member m1_0 
+    where
+        m1_0.member_id=?
+2026-03-31 23:43:43.754 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] 코스 생성 시작 — memberId=1, station=합정역, mood=ACTIVE, budget=30000-50000
+2026-03-31 23:43:43.756 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_request
+        (budget_max, budget_min, created_at, member_id, mood, origin_a_address, origin_a_lat, origin_a_lng, origin_b_address, origin_b_lat, origin_b_lng, selected_station_lat, selected_station_lng, selected_station_name, status, transport, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:43:43.761 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseRequest 저장 — id=2, station=합정역
+2026-03-31 23:43:43.762 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseRequest 저장 완료 — courseRequestId=2
+2026-03-31 23:43:43.762 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] 에이전트 루프 실행 시작
+2026-03-31 23:43:43.763 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] 사용자 메시지 생성 완료 — 길이: 85자
+2026-03-31 23:43:43.766 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 1회차 시작 ===
+2026-03-31 23:43:47.649 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 1회차, 소요시간: 3883ms
+2026-03-31 23:43:47.649 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] AI 도구 호출 요청: function=search_nearby_places, args={"lng":126.9177,"radius":500,"category":"restaurant","lat":37.5499}
+2026-03-31 23:43:47.650 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] search_nearby_places 실행 — lat=37.5499, lng=126.9177, category=restaurant, radius=500.0
+2026-03-31 23:43:47.650 [http-nio-8080-exec-7] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 시작: lat=37.5499, lng=126.9177, category=restaurant, radius=500.0
+2026-03-31 23:43:47.650 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 요청 본문: {"locationRestriction":{"circle":{"center":{"latitude":37.5499,"longitude":126.9177},"radius":500.0}},"includedTypes":["restaurant"]}
+2026-03-31 23:43:47.650 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 호출: POST /v1/places:searchNearby
+2026-03-31 23:43:48.314 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 응답 수신 완료
+2026-03-31 23:43:48.315 [http-nio-8080-exec-7] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 완료 (소요시간: 665ms, 응답크기: 255680자)
+2026-03-31 23:43:48.315 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 응답 미리보기: {
+  "places": [
+    {
+      "id": "ChIJOc4lEduYfDURupLmvgHXcMs",
+      "formattedAddress": "6 Yanghwa-ro 16-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5535944,
+        "longitude": 126.92013539999998
+      },
+      "rating": 4,
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "userRatingCount": 2003,
+      "displayName": {
+        "text": "Kyochon Chicken Hongdae",
+        "languageCode": "en"
+      },
+      "photos": [
+        {
+          "name": "places/ChIJ...
+2026-03-31 23:43:48.315 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] 도구 실행 완료 — function=search_nearby_places, 소요시간: 666ms, 결과 길이: 255680자
+2026-03-31 23:43:48.315 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] 도구 결과 (앞 300자): {
+  "places": [
+    {
+      "id": "ChIJOc4lEduYfDURupLmvgHXcMs",
+      "formattedAddress": "6 Yanghwa-ro 16-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5535944,
+        "longitude": 126.92013539999998
+      },
+      "rating": 4,
+      "priceLevel": "PRICE_LEVEL_MODE
+2026-03-31 23:43:48.318 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 2회차 시작 ===
+2026-03-31 23:43:52.924 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 2회차, 소요시간: 4606ms
+2026-03-31 23:43:52.925 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] AI 도구 호출 요청: function=search_nearby_places, args={"lng":126.9218974,"lat":37.5521114,"category":"tourist_attraction","radius":500}
+2026-03-31 23:43:52.926 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] search_nearby_places 실행 — lat=37.5521114, lng=126.9218974, category=tourist_attraction, radius=500.0
+2026-03-31 23:43:52.926 [http-nio-8080-exec-7] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 시작: lat=37.5521114, lng=126.9218974, category=tourist_attraction, radius=500.0
+2026-03-31 23:43:52.927 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 요청 본문: {"locationRestriction":{"circle":{"center":{"latitude":37.5521114,"longitude":126.9218974},"radius":500.0}},"includedTypes":["tourist_attraction"]}
+2026-03-31 23:43:52.927 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 호출: POST /v1/places:searchNearby
+2026-03-31 23:43:53.259 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 응답 수신 완료
+2026-03-31 23:43:53.259 [http-nio-8080-exec-7] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 완료 (소요시간: 332ms, 응답크기: 233091자)
+2026-03-31 23:43:53.259 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 응답 미리보기: {
+  "places": [
+    {
+      "id": "ChIJY1TpNNuYfDUR2uoHfH8zI8c",
+      "formattedAddress": "365-9 Seogyo-dong, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5541898,
+        "longitude": 126.92248330000001
+      },
+      "rating": 4.3,
+      "userRatingCount": 10011,
+      "displayName": {
+        "text": "Hongdae Shopping Street",
+        "languageCode": "en"
+      },
+      "photos": [
+        {
+          "name": "places/ChIJY1TpNNuYfDUR2uoHfH8zI8c/photos/AU_ZVEGXZi3X...
+2026-03-31 23:43:53.259 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] 도구 실행 완료 — function=search_nearby_places, 소요시간: 333ms, 결과 길이: 233091자
+2026-03-31 23:43:53.259 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] 도구 결과 (앞 300자): {
+  "places": [
+    {
+      "id": "ChIJY1TpNNuYfDUR2uoHfH8zI8c",
+      "formattedAddress": "365-9 Seogyo-dong, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5541898,
+        "longitude": 126.92248330000001
+      },
+      "rating": 4.3,
+      "userRatingCount": 10011,
+     
+2026-03-31 23:43:53.281 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 3회차 시작 ===
+2026-03-31 23:43:59.183 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 3회차, 소요시간: 5901ms
+2026-03-31 23:43:59.184 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] AI 도구 호출 요청: function=search_nearby_places, args={"radius":500,"lat":37.5541898,"category":"cafe","lng":126.92248330000001}
+2026-03-31 23:43:59.184 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] search_nearby_places 실행 — lat=37.5541898, lng=126.92248330000001, category=cafe, radius=500.0
+2026-03-31 23:43:59.185 [http-nio-8080-exec-7] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 시작: lat=37.5541898, lng=126.92248330000001, category=cafe, radius=500.0
+2026-03-31 23:43:59.185 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 요청 본문: {"locationRestriction":{"circle":{"center":{"latitude":37.5541898,"longitude":126.92248330000001},"radius":500.0}},"includedTypes":["cafe"]}
+2026-03-31 23:43:59.185 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 호출: POST /v1/places:searchNearby
+2026-03-31 23:44:00.025 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 응답 수신 완료
+2026-03-31 23:44:00.026 [http-nio-8080-exec-7] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 완료 (소요시간: 841ms, 응답크기: 255790자)
+2026-03-31 23:44:00.026 [http-nio-8080-exec-7] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 응답 미리보기: {
+  "places": [
+    {
+      "id": "ChIJZYLk5MaZfDUROCIbpIlY9bY",
+      "formattedAddress": "7 Hongik-ro 2-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.554237,
+        "longitude": 126.92334499999998
+      },
+      "rating": 4.2,
+      "userRatingCount": 242,
+      "displayName": {
+        "text": "Kaffee 345",
+        "languageCode": "ko"
+      },
+      "photos": [
+        {
+          "name": "places/ChIJZYLk5MaZfDUROCIbpIlY9bY/photos/AU_ZVEHhGLsWd2cC5A3-SnCUPAv1...
+2026-03-31 23:44:00.026 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] 도구 실행 완료 — function=search_nearby_places, 소요시간: 842ms, 결과 길이: 255790자
+2026-03-31 23:44:00.026 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] 도구 결과 (앞 300자): {
+  "places": [
+    {
+      "id": "ChIJZYLk5MaZfDUROCIbpIlY9bY",
+      "formattedAddress": "7 Hongik-ro 2-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.554237,
+        "longitude": 126.92334499999998
+      },
+      "rating": 4.2,
+      "userRatingCount": 242,
+      "d
+2026-03-31 23:44:00.028 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 4회차 시작 ===
+2026-03-31 23:44:18.581 [http-nio-8080-exec-8] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses — 코스 생성 요청 수신: station=합정역, mood=ACTIVE, budget=30000-50000, transport=PUBLIC
+2026-03-31 23:44:18.583 [http-nio-8080-exec-8] DEBUG c.d.d.c.controller.CourseController - [CourseController] Dev 멤버 조회 시도 (id=1)
+2026-03-31 23:44:18.595 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.member_id,
+        m1_0.auth_provider,
+        m1_0.created_at,
+        m1_0.deleted_at,
+        m1_0.email,
+        m1_0.is_deleted,
+        m1_0.nickname,
+        m1_0.profile_image_url,
+        m1_0.role,
+        m1_0.social_id,
+        m1_0.updated_at 
+    from
+        member m1_0 
+    where
+        m1_0.member_id=?
+2026-03-31 23:44:18.603 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] 코스 생성 시작 — memberId=1, station=합정역, mood=ACTIVE, budget=30000-50000
+2026-03-31 23:44:18.609 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_request
+        (budget_max, budget_min, created_at, member_id, mood, origin_a_address, origin_a_lat, origin_a_lng, origin_b_address, origin_b_lat, origin_b_lng, selected_station_lat, selected_station_lng, selected_station_name, status, transport, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:18.616 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseRequest 저장 — id=3, station=합정역
+2026-03-31 23:44:18.616 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseRequest 저장 완료 — courseRequestId=3
+2026-03-31 23:44:18.616 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] 에이전트 루프 실행 시작
+2026-03-31 23:44:18.617 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 사용자 메시지 생성 완료 — 길이: 87자
+2026-03-31 23:44:18.617 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 1회차 시작 ===
+2026-03-31 23:44:22.413 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 1회차, 소요시간: 3796ms
+2026-03-31 23:44:22.414 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] AI 도구 호출 요청: function=search_nearby_places, args={"category":"restaurant","lat":37.5499,"radius":1000,"lng":126.9174}
+2026-03-31 23:44:22.414 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] search_nearby_places 실행 — lat=37.5499, lng=126.9174, category=restaurant, radius=1000.0
+2026-03-31 23:44:22.414 [http-nio-8080-exec-8] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 시작: lat=37.5499, lng=126.9174, category=restaurant, radius=1000.0
+2026-03-31 23:44:22.414 [http-nio-8080-exec-8] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 요청 본문: {"locationRestriction":{"circle":{"center":{"latitude":37.5499,"longitude":126.9174},"radius":1000.0}},"includedTypes":["restaurant"]}
+2026-03-31 23:44:22.414 [http-nio-8080-exec-8] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 호출: POST /v1/places:searchNearby
+2026-03-31 23:44:23.072 [http-nio-8080-exec-8] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] Places API 응답 수신 완료
+2026-03-31 23:44:23.073 [http-nio-8080-exec-8] INFO  c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 주변 장소 검색 완료 (소요시간: 659ms, 응답크기: 257056자)
+2026-03-31 23:44:23.073 [http-nio-8080-exec-8] DEBUG c.d.d.p.service.GooglePlacesService - [GooglePlacesService] 응답 미리보기: {
+  "places": [
+    {
+      "id": "ChIJOc4lEduYfDURupLmvgHXcMs",
+      "formattedAddress": "6 Yanghwa-ro 16-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5535944,
+        "longitude": 126.92013539999998
+      },
+      "rating": 4,
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "userRatingCount": 2003,
+      "displayName": {
+        "text": "Kyochon Chicken Hongdae",
+        "languageCode": "en"
+      },
+      "photos": [
+        {
+          "name": "places/ChIJ...
+2026-03-31 23:44:23.073 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] 도구 실행 완료 — function=search_nearby_places, 소요시간: 659ms, 결과 길이: 257056자
+2026-03-31 23:44:23.074 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 도구 결과 (앞 300자): {
+  "places": [
+    {
+      "id": "ChIJOc4lEduYfDURupLmvgHXcMs",
+      "formattedAddress": "6 Yanghwa-ro 16-gil, Mapo-gu, Seoul, South Korea",
+      "location": {
+        "latitude": 37.5535944,
+        "longitude": 126.92013539999998
+      },
+      "rating": 4,
+      "priceLevel": "PRICE_LEVEL_MODE
+2026-03-31 23:44:23.107 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] === 에이전트 루프 2회차 시작 ===
+2026-03-31 23:44:23.527 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 4회차, 소요시간: 23499ms
+2026-03-31 23:44:23.528 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] AI 최종 텍스트 응답 수신 — 루프 종료 (총 4회차)
+2026-03-31 23:44:23.528 [http-nio-8080-exec-7] INFO  c.d.d.course.service.CourseService - [CourseService] 에이전트 루프 완료 — 소요시간: 39765ms, 응답 길이: 117자
+2026-03-31 23:44:23.528 [http-nio-8080-exec-7] DEBUG c.d.d.course.service.CourseService - [CourseService] AI 응답 JSON (앞 500자): 합정역 근처에서 활기찬 분위기와 30,000원~50,000원 예산에 맞춰 도보 위주 데이트 코스를 추천해 드립니다. 맛있는 식사부터 이색적인 카페 경험까지, 즐거운 시간을 보낼 수 있는 3곳을 선정했습니다.
+
+
+2026-03-31 23:44:23.529 [http-nio-8080-exec-7] ERROR c.d.d.course.service.CourseService - [CourseService] AI 응답 파싱 실패 — JSON 앞 500자: 합정역 근처에서 활기찬 분위기와 30,000원~50,000원 예산에 맞춰 도보 위주 데이트 코스를 추천해 드립니다. 맛있는 식사부터 이색적인 카페 경험까지, 즐거운 시간을 보낼 수 있는 3곳을 선정했습니다.
+
+
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 6 path $
+	at com.google.gson.JsonParser.parseReader(JsonParser.java:76)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:51)
+	at com.datemate.domain.course.service.CourseService.parseCourseAndSave(CourseService.java:342)
+	at com.datemate.domain.course.service.CourseService.createCourse(CourseService.java:87)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.datemate.domain.course.service.CourseService$$SpringCGLIB$$0.createCourse(<generated>)
+	at com.datemate.domain.course.controller.CourseController.createCourse(CourseController.java:66)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1659)
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1465)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:551)
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:433)
+	at com.google.gson.JsonParser.parseReader(JsonParser.java:71)
+	... 151 common frames omitted
+2026-03-31 23:44:23.544 [http-nio-8080-exec-7] ERROR c.d.d.course.service.CourseService - [CourseService] 코스 생성 실패 (CustomException) — code=COURSE_GENERATION_FAILED, message=AI 코스 생성에 실패했습니다. 잠시 후 다시 시도해주세요.
+2026-03-31 23:44:23.556 [http-nio-8080-exec-7] WARN  c.d.g.e.h.GlobalExceptionHandler - [ CustomException ]: AI 코스 생성에 실패했습니다. 잠시 후 다시 시도해주세요.
+2026-03-31 23:44:39.055 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] Gemini API 응답 수신 — 2회차, 소요시간: 15948ms
+2026-03-31 23:44:39.055 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] AI 최종 텍스트 응답 수신 — 루프 종료 (총 2회차)
+2026-03-31 23:44:39.055 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] 에이전트 루프 완료 — 소요시간: 20439ms, 응답 길이: 1278자
+2026-03-31 23:44:39.055 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] AI 응답 JSON (앞 500자): ```json
+{
+  "title": "합정 & 홍대 액티브 데이트 코스",
+  "description": "합정역에서 시작하여 홍대 거리의 활기찬 분위기를 만끽하고 맛있는 닭갈비와 이색적인 카페를 즐기는 데이트 코스입니다.",
+  "places": [
+    {
+      "order": 1,
+      "name": "신미경 홍대 닭갈비",
+      "google_place_id": "ChIJhW7NM9uYfDURXImO-sniaD0",
+      "category": "RESTAURANT",
+      "duration_minutes": 90,
+      "cost_min": 25000,
+      "cost_max": 35000,
+      "travel_method_to_next": "WALK",
+      "travel_time_to_next": 7,
+      "memo": "신선한 닭갈비를 직접 볶아 먹으며 활기찬 식사를 즐길 수 있는 곳입니다. 합정역에서 도보로 가
+2026-03-31 23:44:39.056 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] AI 응답 파싱 — 장소 3개 발견
+2026-03-31 23:44:39.056 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 파싱 결과 — title=합정 & 홍대 액티브 데이트 코스, totalDuration=249분, costRange=40000-65000원
+2026-03-31 23:44:39.059 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course
+        (course_request_id, created_at, description, member_id, start_time, status, title, total_cost_max, total_cost_min, total_duration, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:39.063 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] Course 엔티티 저장 — courseId=2
+2026-03-31 23:44:39.063 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 장소 저장 중 — [1/3] 신미경 홍대 닭갈비
+2026-03-31 23:44:39.065 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.place_id,
+        p1_0.address,
+        p1_0.category,
+        p1_0.created_at,
+        p1_0.google_place_id,
+        p1_0.latitude,
+        p1_0.longitude,
+        p1_0.name,
+        p1_0.photo_reference,
+        p1_0.price_level,
+        p1_0.rating,
+        p1_0.updated_at 
+    from
+        place p1_0 
+    where
+        p1_0.google_place_id=?
+2026-03-31 23:44:39.067 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 신규 Place 생성 — googlePlaceId=ChIJhW7NM9uYfDURXImO-sniaD0
+2026-03-31 23:44:39.069 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        place
+        (address, category, created_at, google_place_id, latitude, longitude, name, photo_reference, price_level, rating, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:39.071 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_place
+        (cost_max, cost_min, course_id, created_at, duration_minutes, memo, order_index, place_id, travel_method_to_next, travel_time_to_next, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:39.073 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 장소 저장 중 — [2/3] 943 킹스크로스
+2026-03-31 23:44:39.074 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.place_id,
+        p1_0.address,
+        p1_0.category,
+        p1_0.created_at,
+        p1_0.google_place_id,
+        p1_0.latitude,
+        p1_0.longitude,
+        p1_0.name,
+        p1_0.photo_reference,
+        p1_0.price_level,
+        p1_0.rating,
+        p1_0.updated_at 
+    from
+        place p1_0 
+    where
+        p1_0.google_place_id=?
+2026-03-31 23:44:39.078 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_place
+        (cost_max, cost_min, course_id, created_at, duration_minutes, memo, order_index, place_id, travel_method_to_next, travel_time_to_next, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:39.079 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 장소 저장 중 — [3/3] 홍대 걷고싶은거리
+2026-03-31 23:44:39.080 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.place_id,
+        p1_0.address,
+        p1_0.category,
+        p1_0.created_at,
+        p1_0.google_place_id,
+        p1_0.latitude,
+        p1_0.longitude,
+        p1_0.name,
+        p1_0.photo_reference,
+        p1_0.price_level,
+        p1_0.rating,
+        p1_0.updated_at 
+    from
+        place p1_0 
+    where
+        p1_0.google_place_id=?
+2026-03-31 23:44:39.082 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] 신규 Place 생성 — googlePlaceId=ChIJax2hyoSZfDURwQTzCoqJDiY
+2026-03-31 23:44:39.083 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        place
+        (address, category, created_at, google_place_id, latitude, longitude, name, photo_reference, price_level, rating, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:39.085 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        course_place
+        (cost_max, cost_min, course_id, created_at, duration_minutes, memo, order_index, place_id, travel_method_to_next, travel_time_to_next, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-31 23:44:39.086 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] CoursePlace 전체 저장 완료 — courseId=2, placeCount=3
+2026-03-31 23:44:39.086 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] Course 저장 완료 — courseId=2, title=합정 & 홍대 액티브 데이트 코스
+2026-03-31 23:44:39.087 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        cp1_0.course_place_id,
+        cp1_0.cost_max,
+        cp1_0.cost_min,
+        cp1_0.course_id,
+        cp1_0.created_at,
+        cp1_0.duration_minutes,
+        cp1_0.memo,
+        cp1_0.order_index,
+        cp1_0.place_id,
+        cp1_0.travel_method_to_next,
+        cp1_0.travel_time_to_next,
+        cp1_0.updated_at 
+    from
+        course_place cp1_0 
+    where
+        cp1_0.course_id=? 
+    order by
+        cp1_0.order_index
+2026-03-31 23:44:39.089 [http-nio-8080-exec-8] DEBUG c.d.d.course.service.CourseService - [CourseService] CourseResponse 조립 — courseId=2, placeCount=3
+2026-03-31 23:44:39.090 [http-nio-8080-exec-8] INFO  c.d.d.course.service.CourseService - [CourseService] 코스 생성 전체 완료 — courseId=2
+2026-03-31 23:44:39.090 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    update
+        course_request 
+    set
+        budget_max=?,
+        budget_min=?,
+        member_id=?,
+        mood=?,
+        origin_a_address=?,
+        origin_a_lat=?,
+        origin_a_lng=?,
+        origin_b_address=?,
+        origin_b_lat=?,
+        origin_b_lng=?,
+        selected_station_lat=?,
+        selected_station_lng=?,
+        selected_station_name=?,
+        status=?,
+        transport=?,
+        updated_at=? 
+    where
+        course_request_id=?
+2026-03-31 23:44:39.093 [http-nio-8080-exec-8] INFO  c.d.d.c.controller.CourseController - [CourseController] POST /courses — 코스 생성 완료 (소요시간: 20491ms)
+2026-03-31 23:44:56.043 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-31 23:44:56.047 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

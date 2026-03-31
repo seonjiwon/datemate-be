@@ -43,16 +43,29 @@ public class AuthService {
      */
     @Transactional
     public TokenResponse login(LoginRequest request) {
+        log.info("[AuthService] 로그인 시작: provider={}, deviceInfo={}", request.provider(), request.deviceInfo());
+
         // 1. 소셜 토큰을 검증하고 사용자 정보를 추출한다
+        long startTime = System.currentTimeMillis();
         SocialUserInfo socialUser = verifySocialToken(request.provider(), request.socialToken());
+        log.debug("[AuthService] 소셜 토큰 검증 완료 ({}ms): socialId={}", System.currentTimeMillis() - startTime, socialUser.socialId());
 
         // 2. 기존 회원 조회 또는 신규 가입
+        boolean[] isNewMember = {false};
         Member member = memberRepository.findBySocialIdAndAuthProvider(
             socialUser.socialId(), request.provider()
-        ).orElseGet(() -> registerNewMember(socialUser, request.provider()));
+        ).orElseGet(() -> {
+            isNewMember[0] = true;
+            return registerNewMember(socialUser, request.provider());
+        });
+
+        if (!isNewMember[0]) {
+            log.debug("[AuthService] 기존 회원 조회: memberId={}", member.getId());
+        }
 
         // 3. 탈퇴한 회원인지 확인한다
         if (member.getIsDeleted()) {
+            log.warn("[AuthService] 탈퇴한 회원 로그인 시도: memberId={}, provider={}", member.getId(), request.provider());
             throw new CustomException(AuthErrorCode.SOCIAL_TOKEN_INVALID);
         }
 
@@ -65,7 +78,8 @@ public class AuthService {
         // 5. 리프레시 토큰을 DB에 저장한다 (기기별 관리)
         saveOrUpdateRefreshToken(member, refreshToken, request.deviceInfo());
 
-        log.info("[AuthService] 로그인 성공: memberId={}, provider={}", member.getId(), request.provider());
+        long elapsed = System.currentTimeMillis() - startTime;
+        log.info("[AuthService] 로그인 성공 ({}ms): memberId={}, provider={}, isNew={}", elapsed, member.getId(), request.provider(), isNewMember[0]);
 
         return new TokenResponse(accessToken, refreshToken);
     }
@@ -79,12 +93,18 @@ public class AuthService {
      */
     @Transactional
     public TokenResponse refreshToken(TokenRefreshRequest request) {
+        log.info("[AuthService] 토큰 갱신 시작");
+
         // 1. DB에서 리프레시 토큰을 조회한다
         AuthToken authToken = authTokenRepository.findByRefreshToken(request.refreshToken())
-            .orElseThrow(() -> new CustomException(AuthErrorCode.REFRESH_TOKEN_NOT_FOUND));
+            .orElseThrow(() -> {
+                log.warn("[AuthService] 리프레시 토큰을 찾을 수 없음");
+                return new CustomException(AuthErrorCode.REFRESH_TOKEN_NOT_FOUND);
+            });
 
         // 2. 만료 여부를 확인한다
         if (authToken.isExpired()) {
+            log.warn("[AuthService] 리프레시 토큰 만료: memberId={}, expiresAt={}", authToken.getMember().getId(), authToken.getExpiresAt());
             authTokenRepository.delete(authToken);
             throw new CustomException(AuthErrorCode.REFRESH_TOKEN_EXPIRED);
         }
@@ -99,6 +119,8 @@ public class AuthService {
         // 4. 리프레시 토큰을 교체한다 (rotation)
         authToken.rotate(newRefreshToken, LocalDateTime.now().plusDays(14));
 
+        log.info("[AuthService] 토큰 갱신 완료: memberId={}", member.getId());
+
         return new TokenResponse(newAccessToken, newRefreshToken);
     }
 
@@ -108,8 +130,9 @@ public class AuthService {
      */
     @Transactional
     public void logout(Member member) {
+        log.info("[AuthService] 로그아웃 시작: memberId={}", member.getId());
         authTokenRepository.deleteAllByMember(member);
-        log.info("[AuthService] 로그아웃: memberId={}", member.getId());
+        log.info("[AuthService] 로그아웃 완료: memberId={} — 모든 리프레시 토큰 삭제됨", member.getId());
     }
 
     // ============================================================
@@ -121,9 +144,11 @@ public class AuthService {
      * 2. TODO: 실제 카카오/Apple API 호출로 교체 예정
      */
     private SocialUserInfo verifySocialToken(AuthProvider provider, String socialToken) {
+        log.debug("[AuthService] 소셜 토큰 검증 시작: provider={}", provider);
         // TODO: 실제 구현
         // KAKAO → kakaoAuthClient.verify(socialToken) → socialId, nickname, profileImage
         // APPLE → appleAuthClient.verify(socialToken) → socialId, email
+        log.warn("[AuthService] 소셜 토큰 검증 stub 사용 중 — 실제 SDK 연동 필요: provider={}", provider);
         return new SocialUserInfo(
             "social-" + socialToken.hashCode(),
             "DateMate 사용자",
@@ -160,6 +185,7 @@ public class AuthService {
 
         if (authToken != null) {
             authToken.rotate(refreshToken, LocalDateTime.now().plusDays(14));
+            log.debug("[AuthService] 기존 리프레시 토큰 교체: memberId={}, deviceInfo={}", member.getId(), deviceInfo);
         } else {
             AuthToken newToken = AuthToken.builder()
                 .member(member)
@@ -168,6 +194,7 @@ public class AuthService {
                 .expiresAt(LocalDateTime.now().plusDays(14))
                 .build();
             authTokenRepository.save(newToken);
+            log.debug("[AuthService] 신규 리프레시 토큰 생성: memberId={}, deviceInfo={}", member.getId(), deviceInfo);
         }
     }
 
