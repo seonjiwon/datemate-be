@@ -1,6 +1,7 @@
 package com.datemate.global.exception.handler;
 
 
+import com.datemate.global.CustomResponse;
 import com.datemate.global.code.error.BaseErrorCode;
 import com.datemate.global.code.error.GeneralErrorCode;
 import com.datemate.global.exception.CustomException;
